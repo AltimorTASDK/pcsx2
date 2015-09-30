@@ -222,8 +222,23 @@ void GSRendererDX::DrawPrims(GSTexture* rt, GSTexture* ds, GSTextureCache::Sourc
 	// ps
 
 	GSDeviceDX::PSSelector ps_sel;
+
 	GSDeviceDX::PSSamplerSelector ps_ssel;
 	GSDeviceDX::PSConstantBuffer ps_cb;
+
+	extern int s_crc_hack_level;
+	if(GSRenderer::m_game.title == CRC::Persona4 && s_crc_hack_level > 3 && (context->TEX0.TBP0 == 0 || context->TEX0.TBP0 == 0x1180) && context->TEX0.PSM == 0 && PRIM->TME)
+	{
+		rtcopy = dev->CreateRenderTarget(rtsize.x, rtsize.y, rt->IsMSAA(), rt->GetFormat());
+		dev->CopyRect(rt, rtcopy, GSVector4i(rtsize).zwxy());
+
+		// Make it opaque
+		om_bsel = GSDeviceDX::OMBlendSelector();
+
+		ps_sel.p4_ultrahack = 1;
+		ps_sel.date = 1;
+		vs_sel.rtcopy = 1;
+	}
 
 	// Gregory: code is not yet ready so let's only enable it when
 	// CRC is below the FULL level

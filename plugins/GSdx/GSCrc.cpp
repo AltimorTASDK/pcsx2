@@ -262,6 +262,7 @@ CRC::Game CRC::m_games[] =
 	{0xD382C164, SMTDDS2, US, ZWriteMustNotClear},		// SMT Digital Devil Saga 2
 	{0xD568B684, SMTDDS2, EU, ZWriteMustNotClear},		// SMT Digital Devil Saga 2
 	{0xE47C1A9C, SMTDDS2, JP, ZWriteMustNotClear},		// SMT Digital Devil Saga 2
+	{0xDEDC3B71, Persona4, US, 0},
 	{0x0B8AB37B, RozenMaidenGebetGarden, JP, 0},
 	{0x1CC39DBD, SuikodenTactics, US, 0},
 	{0x3E205556, SuikodenTactics, EU, 0},

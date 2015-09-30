@@ -81,6 +81,7 @@ public:
 		SMTNocturne,
 		SMTDDS1,
 		SMTDDS2,
+		Persona4,
 		RozenMaidenGebetGarden,
 		EvangelionJo,
 		SuikodenTactics,

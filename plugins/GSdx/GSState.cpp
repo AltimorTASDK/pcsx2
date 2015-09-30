@@ -25,7 +25,7 @@
 
 //#define Offset_ST  // Fixes Persona3 mini map alignment which is off even in software rendering
 
-static int s_crc_hack_level = 3;
+/*static*/ int s_crc_hack_level = 3;
 
 GSState::GSState()
 	: m_version(6)

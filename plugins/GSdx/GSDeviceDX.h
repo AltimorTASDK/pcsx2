@@ -180,6 +180,7 @@ public:
 				uint32 point_sampler:1;
 				uint32 shuffle:1;
 				uint32 read_ba:1;
+				uint32 p4_ultrahack:1;
 			};
 
 			uint32 key;

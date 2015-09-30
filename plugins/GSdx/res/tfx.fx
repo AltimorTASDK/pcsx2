@@ -43,6 +43,10 @@
 #define PS_READ_BA 0
 #endif
 
+#ifndef PS_P4_ULTRAHACK
+#define PS_P4_ULTRAHACK 0
+#endif
+
 struct VS_INPUT
 {
 	float2 st : TEXCOORD0;
@@ -759,6 +763,10 @@ PS_OUTPUT ps_main(PS_INPUT input)
 		if(c.a < 0.5) c.a += 0.5;
 	}
 
+#if PS_P4_ULTRAHACK
+	c = sample_rt((floor(input.tp.xy * WH.zw) + 0.5) / WH.zw) * float4(1.75, 1.60, 1.50, 1.00);
+#endif
+
 	output.c0 = c;
 
 	return output;
@@ -800,7 +808,7 @@ VS_OUTPUT vs_main(VS_INPUT input)
 	{
 		if(VS_FST)
 		{
-            output.t.xy = input.t * TextureScale;
+			output.t.xy = input.t * TextureScale;
 			output.t.w = 1.0f;
 		}
 		else
@@ -826,6 +834,11 @@ float4 ps_main(PS_INPUT input) : COLOR
 	float4 c = ps_color(input);
 
 	c.a *= 2;
+
+#if PS_P4_ULTRAHACK
+	// BGR instead of RGB in DX9?
+	c = sample_rt((floor(input.tp.xy * WH.zw) + 0.5) / WH.zw) * float4(1.50, 1.60, 1.75, 1.00);
+#endif
 
 	return c;
 }

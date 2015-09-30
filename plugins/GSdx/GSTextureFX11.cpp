@@ -178,7 +178,7 @@ void GSDevice11::SetupPS(PSSelector sel, const PSConstantBuffer* cb, PSSamplerSe
 
 	if(i == m_ps.end())
 	{
-		string str[20];
+		string str[21];
 
 		str[0] = format("%d", sel.fst);
 		str[1] = format("%d", sel.wms);
@@ -200,6 +200,7 @@ void GSDevice11::SetupPS(PSSelector sel, const PSConstantBuffer* cb, PSSamplerSe
 		str[17] = format("%d", sel.point_sampler);
 		str[18] = format("%d", sel.shuffle);
 		str[19] = format("%d", sel.read_ba);
+		str[20] = format("%d", sel.p4_ultrahack);
 
 		D3D11_SHADER_MACRO macro[] =
 		{
@@ -221,8 +222,9 @@ void GSDevice11::SetupPS(PSSelector sel, const PSConstantBuffer* cb, PSSamplerSe
 			{"PS_SPRITEHACK", str[15].c_str()},
 			{"PS_TCOFFSETHACK", str[16].c_str()},
 			{"PS_POINT_SAMPLER", str[17].c_str()},
-			{"PS_SHUFFLE", str[18].c_str() },
-			{"PS_READ_BA", str[19].c_str() },
+			{"PS_SHUFFLE", str[18].c_str()},
+			{"PS_READ_BA", str[19].c_str()},
+			{"PS_P4_ULTRAHACK", str[20].c_str()},
 			{NULL, NULL},
 		};
 
